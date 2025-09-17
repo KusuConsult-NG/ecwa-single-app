@@ -4,8 +4,16 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
+interface User {
+  id: string
+  email: string
+  name: string
+  role: string
+  permissions: string[]
+}
+
 export default function Topbar() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
