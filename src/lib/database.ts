@@ -3,6 +3,7 @@ import { hashPassword } from './auth'
 // In-memory database for single app (replace with real database in production)
 class Database {
   private users: any[] = []
+  private organizations: any[] = []
   private sessions: Map<string, { userId: string; expires: Date }> = new Map()
   private financials: Map<string, any[]> = new Map()
   private members: Map<string, any[]> = new Map()
@@ -348,6 +349,9 @@ class Database {
       createdAt: new Date().toISOString()
     }
     
+    // Store the organization
+    this.organizations.push(organization)
+    
     // Initialize empty data for the new organization
     this.financials.set(organization.id, [])
     this.members.set(organization.id, [])
@@ -362,24 +366,21 @@ class Database {
 
   async getOrganization(id: string): Promise<any | null> {
     await this.ensureInitialized()
-    // For now, return a mock organization since we don't store them separately
-    // In a real app, you'd have a separate organizations table
-    return {
-      id,
-      name: 'ECWA Organization',
-      type: 'LC',
-      createdAt: new Date().toISOString()
-    }
+    return this.organizations.find(org => org.id === id) || null
   }
 
   async updateOrganization(id: string, updates: any): Promise<any | null> {
     await this.ensureInitialized()
-    // Mock implementation - in real app, update organization in database
-    return {
-      id,
-      ...updates,
-      updatedAt: new Date().toISOString()
+    const orgIndex = this.organizations.findIndex(org => org.id === id)
+    if (orgIndex !== -1) {
+      this.organizations[orgIndex] = { 
+        ...this.organizations[orgIndex], 
+        ...updates,
+        updatedAt: new Date().toISOString()
+      }
+      return this.organizations[orgIndex]
     }
+    return null
   }
 }
 
