@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import AutofillInput from '@/components/AutofillInput'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -48,11 +49,12 @@ export default function LoginPage() {
           <div className="row">
             <div>
               <label style={{ color: 'black' }}>Email*</label>
-              <input 
-                type="email" 
-                placeholder="you@church.org" 
+              <AutofillInput
+                fieldName="email"
+                type="email"
+                placeholder="you@church.org"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={setEmail}
                 required
                 style={{ background: 'white', color: 'black' }}
               />

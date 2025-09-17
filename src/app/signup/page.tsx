@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import AutofillInput from '@/components/AutofillInput'
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -74,23 +75,23 @@ export default function SignupPage() {
           <div className="row">
             <div>
               <label style={{ color: 'black' }}>Full name*</label>
-              <input 
-                placeholder="Your name" 
-                name="name"
+              <AutofillInput
+                fieldName="name"
+                placeholder="Your name"
                 value={formData.name}
-                onChange={handleChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, name: value }))}
                 required
                 style={{ background: 'white', color: 'black' }}
               />
             </div>
             <div>
               <label style={{ color: 'black' }}>Email*</label>
-              <input 
-                type="email" 
-                placeholder="you@church.org" 
-                name="email"
+              <AutofillInput
+                fieldName="email"
+                type="email"
+                placeholder="you@church.org"
                 value={formData.email}
-                onChange={handleChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, email: value }))}
                 required
                 style={{ background: 'white', color: 'black' }}
               />
@@ -137,11 +138,11 @@ export default function SignupPage() {
             </div>
             <div>
               <label style={{ color: 'black' }}>Organization Name*</label>
-              <input 
-                placeholder="ECWA LC • Tudun Wada" 
-                name="orgName"
+              <AutofillInput
+                fieldName="orgName"
+                placeholder="ECWA LC • Tudun Wada"
                 value={formData.orgName}
-                onChange={handleChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, orgName: value }))}
                 required
                 style={{ background: 'white', color: 'black' }}
               />
@@ -150,21 +151,21 @@ export default function SignupPage() {
           <div className="row">
             <div>
               <label style={{ color: 'black' }}>Phone</label>
-              <input 
-                placeholder="+234 ..." 
-                name="phone"
+              <AutofillInput
+                fieldName="phone"
+                placeholder="+234 ..."
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))}
                 style={{ background: 'white', color: 'black' }}
               />
             </div>
             <div>
               <label style={{ color: 'black' }}>Address</label>
-              <input 
-                placeholder="Address" 
-                name="address"
+              <AutofillInput
+                fieldName="address"
+                placeholder="Address"
                 value={formData.address}
-                onChange={handleChange}
+                onChange={(value) => setFormData(prev => ({ ...prev, address: value }))}
                 style={{ background: 'white', color: 'black' }}
               />
             </div>

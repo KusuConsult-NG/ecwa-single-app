@@ -226,6 +226,62 @@ select:-webkit-autofill:active {
   color: black !important;
 }
 
+/* Autofill suggestions styling */
+.autofill-container {
+  position: relative;
+}
+
+.autofill-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid var(--line);
+  border-top: none;
+  border-radius: 0 0 var(--radius-input) var(--radius-input);
+  box-shadow: var(--shadow-pop);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autofill-suggestion {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.autofill-suggestion:hover,
+.autofill-suggestion.selected {
+  background: var(--bg);
+}
+
+.autofill-suggestion:last-child {
+  border-bottom: none;
+}
+
+.autofill-suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+
+.autofill-suggestions::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+.autofill-suggestions::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
+}
+
+.autofill-suggestions::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
 /* Section Title */
 .section-title {
   display: flex;
