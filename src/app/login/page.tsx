@@ -42,28 +42,30 @@ export default function LoginPage() {
 
   return (
     <section id="login" className="container">
-      <div className="auth card">
-        <h2>Log In</h2>
+      <div className="auth card" style={{ background: 'white', color: 'black' }}>
+        <h2 style={{ color: 'black' }}>Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div>
-              <label>Email*</label>
+              <label style={{ color: 'black' }}>Email*</label>
               <input 
                 type="email" 
                 placeholder="you@church.org" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
             <div>
-              <label>Password*</label>
+              <label style={{ color: 'black' }}>Password*</label>
               <input 
                 type="password" 
                 placeholder="••••••••" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
           </div>
@@ -74,7 +76,7 @@ export default function LoginPage() {
             </button>
           </div>
           {error && (
-            <div style={{ marginTop: '1rem', color: 'var(--danger)', fontSize: '14px' }}>
+            <div style={{ marginTop: '1rem', color: 'red', fontSize: '14px' }}>
               {error}
             </div>
           )}
