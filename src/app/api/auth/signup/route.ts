@@ -16,9 +16,9 @@ export async function POST(request: NextRequest) {
       address
     } = await request.json()
     
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !orgType || !orgName) {
       return NextResponse.json(
-        { error: "Name, email and password are required" },
+        { error: "Name, email, password, organization type, and organization name are required" },
         { status: 400 }
       )
     }
@@ -44,24 +44,21 @@ export async function POST(request: NextRequest) {
     const passwordHash = hashPassword(password)
     await db.updateUser(user.id, { passwordHash })
 
-    // Create organization if provided
-    let organization = null
-    if (orgType && orgName) {
-      organization = await db.createOrganization({
-        name: orgName,
-        type: orgType,
-        phone: phone || '',
-        address: address || '',
-        createdBy: user.id
-      })
+    // Create organization
+    const organization = await db.createOrganization({
+      name: orgName,
+      type: orgType,
+      phone: phone || '',
+      address: address || '',
+      createdBy: user.id
+    })
 
-      // Update user with organization info
-      await db.updateUser(user.id, { 
-        orgId: organization.id,
-        orgName: organization.name,
-        role: role === 'Member' ? 'Admin' : role // First user becomes admin
-      })
-    }
+    // Update user with organization info
+    await db.updateUser(user.id, { 
+      orgId: organization.id,
+      orgName: organization.name,
+      role: role === 'Member' ? 'Admin' : role // First user becomes admin
+    })
 
     // Create session
     const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
@@ -103,7 +100,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Signup error:', error)
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: `Internal server error: ${error instanceof Error ? error.message : 'Unknown error'}` },
       { status: 500 }
     )
   }

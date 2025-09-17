@@ -16,9 +16,23 @@ export async function POST(request: NextRequest) {
 
     // Get user
     const user = await db.getUserByEmail(email)
-    if (!user || !user.passwordHash || !verifyPassword(password, user.passwordHash)) {
+    if (!user) {
       return NextResponse.json(
-        { error: "Invalid credentials" },
+        { error: "User not found" },
+        { status: 401 }
+      )
+    }
+    
+    if (!user.passwordHash) {
+      return NextResponse.json(
+        { error: "User account not properly set up" },
+        { status: 401 }
+      )
+    }
+    
+    if (!verifyPassword(password, user.passwordHash)) {
+      return NextResponse.json(
+        { error: "Invalid password" },
         { status: 401 }
       )
     }
@@ -60,7 +74,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Login error:', error)
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: `Internal server error: ${error instanceof Error ? error.message : 'Unknown error'}` },
       { status: 500 }
     )
   }
