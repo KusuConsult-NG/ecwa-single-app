@@ -68,22 +68,23 @@ export default function SignupPage() {
 
   return (
     <section id="signup" className="container">
-      <div className="auth card">
-        <h2>Sign Up & Create Organization</h2>
+      <div className="auth card" style={{ background: 'white', color: 'black' }}>
+        <h2 style={{ color: 'black' }}>Sign Up & Create Organization</h2>
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div>
-              <label>Full name*</label>
+              <label style={{ color: 'black' }}>Full name*</label>
               <input 
                 placeholder="Your name" 
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
             <div>
-              <label>Email*</label>
+              <label style={{ color: 'black' }}>Email*</label>
               <input 
                 type="email" 
                 placeholder="you@church.org" 
@@ -91,12 +92,13 @@ export default function SignupPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
           </div>
           <div className="row">
             <div>
-              <label>Password*</label>
+              <label style={{ color: 'black' }}>Password*</label>
               <input 
                 type="password" 
                 placeholder="••••••••" 
@@ -104,10 +106,11 @@ export default function SignupPage() {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
             <div>
-              <label>Confirm password*</label>
+              <label style={{ color: 'black' }}>Confirm password*</label>
               <input 
                 type="password" 
                 placeholder="••••••••" 
@@ -115,13 +118,14 @@ export default function SignupPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
           </div>
           <div className="row">
             <div>
-              <label>Organization Type*</label>
-              <select name="orgType" value={formData.orgType} onChange={handleChange}>
+              <label style={{ color: 'black' }}>Organization Type*</label>
+              <select name="orgType" value={formData.orgType} onChange={handleChange} style={{ background: 'white', color: 'black' }}>
                 <option value="LC">LC</option>
                 <option value="LCC">LCC</option>
                 <option value="DCC">DCC</option>
@@ -132,33 +136,36 @@ export default function SignupPage() {
               </select>
             </div>
             <div>
-              <label>Organization Name*</label>
+              <label style={{ color: 'black' }}>Organization Name*</label>
               <input 
                 placeholder="ECWA LC • Tudun Wada" 
                 name="orgName"
                 value={formData.orgName}
                 onChange={handleChange}
                 required
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
           </div>
           <div className="row">
             <div>
-              <label>Phone</label>
+              <label style={{ color: 'black' }}>Phone</label>
               <input 
                 placeholder="+234 ..." 
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
             <div>
-              <label>Address</label>
+              <label style={{ color: 'black' }}>Address</label>
               <input 
                 placeholder="Address" 
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
+                style={{ background: 'white', color: 'black' }}
               />
             </div>
           </div>
@@ -169,7 +176,7 @@ export default function SignupPage() {
             </button>
           </div>
           {error && (
-            <div style={{ marginTop: '1rem', color: 'var(--danger)', fontSize: '14px' }}>
+            <div style={{ marginTop: '1rem', color: 'red', fontSize: '14px' }}>
               {error}
             </div>
           )}
