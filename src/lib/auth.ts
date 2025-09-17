@@ -10,6 +10,7 @@ export interface AuthToken {
   tenantId?: string
   role: string
   permissions: string[]
+  type?: string
   iat: number
   exp: number
 }

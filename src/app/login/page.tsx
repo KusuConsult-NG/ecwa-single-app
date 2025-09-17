@@ -72,7 +72,7 @@ export default function LoginPage() {
             </div>
           </div>
           <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', justifyContent: 'space-between', alignItems: 'center' }}>
-            <a href="#/reset" className="muted">Forgot password?</a>
+            <Link href="/forgot-password" className="muted">Forgot password?</Link>
             <button type="submit" className="btn primary" disabled={loading}>
               {loading ? 'Logging in...' : 'Log In'}
             </button>

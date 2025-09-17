@@ -1,0 +1,132 @@
+{
+  "users": [
+    {
+      "email": "admin@ecwa.app",
+      "name": "Admin User",
+      "role": "Admin",
+      "permissions": [
+        "*"
+      ],
+      "id": "user_1758131893679_3dbuprgg7",
+      "createdAt": "2025-09-17T17:58:13.679Z",
+      "passwordHash": "YWRtaW4xMjNlY3dhLXNhbHQ="
+    },
+    {
+      "email": "treasurer@ecwa.app",
+      "name": "Treasurer User",
+      "role": "Treasurer",
+      "permissions": [
+        "financials.read",
+        "financials.write",
+        "expenditures.read",
+        "expenditures.write"
+      ],
+      "id": "user_1758131893680_tmuf4opt3",
+      "createdAt": "2025-09-17T17:58:13.680Z",
+      "passwordHash": "dHJlYXN1cmVyMTIzZWN3YS1zYWx0"
+    },
+    {
+      "email": "test2@example.com",
+      "name": "Test User 2",
+      "role": "Admin",
+      "permissions": [
+        "profile.read",
+        "profile.write"
+      ],
+      "id": "user_1758131893681_ik3xcfz18",
+      "createdAt": "2025-09-17T17:58:13.681Z",
+      "passwordHash": "bmV3cGFzc3dvcmQxMjNlY3dhLXNhbHQ=",
+      "orgId": "org_1758131893681_7jqm1o0bm",
+      "orgName": "Test Church 2"
+    }
+  ],
+  "organizations": [
+    {
+      "name": "Test Church 2",
+      "type": "LC",
+      "phone": "",
+      "address": "",
+      "createdBy": "user_1758131893681_ik3xcfz18",
+      "id": "org_1758131893681_7jqm1o0bm",
+      "createdAt": "2025-09-17T17:58:13.681Z"
+    }
+  ],
+  "sessions": {},
+  "financials": {
+    "ecwa-main": [
+      {
+        "id": "fin_1",
+        "type": "income",
+        "amount": 50000,
+        "description": "Tithe Collection",
+        "date": "2025-09-17T17:58:13.681Z",
+        "category": "Tithe"
+      }
+    ],
+    "org_1758131893681_7jqm1o0bm": []
+  },
+  "members": {
+    "ecwa-main": [
+      {
+        "id": "mem_1",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "phone": "+2348012345678",
+        "address": "123 Main St, Jos",
+        "membershipDate": "2025-09-17T17:58:13.681Z",
+        "status": "active"
+      }
+    ],
+    "org_1758131893681_7jqm1o0bm": []
+  },
+  "expenditures": {
+    "org_1758131893681_7jqm1o0bm": []
+  },
+  "agencies": {
+    "org_1758131893681_7jqm1o0bm": []
+  },
+  "staff": {
+    "org_1758131893681_7jqm1o0bm": []
+  },
+  "requisitions": {
+    "org_1758131893681_7jqm1o0bm": []
+  },
+  "leaders": {
+    "ecwa-main": [
+      {
+        "id": "leader_1",
+        "name": "Pastor John Smith",
+        "email": "pastor@ecwa.app",
+        "phone": "+2348012345678",
+        "role": "Senior Minister",
+        "portfolio": "Pastoral Care",
+        "status": "active",
+        "startDate": "2025-09-17T17:58:13.681Z",
+        "createdAt": "2025-09-17T17:58:13.681Z"
+      },
+      {
+        "id": "leader_2",
+        "name": "Mrs. Sarah Johnson",
+        "email": "accountant@ecwa.app",
+        "phone": "+2348012345679",
+        "role": "Accountant",
+        "portfolio": "Financial Management",
+        "status": "active",
+        "startDate": "2025-09-17T17:58:13.681Z",
+        "createdAt": "2025-09-17T17:58:13.681Z"
+      },
+      {
+        "id": "leader_3",
+        "name": "Mr. David Wilson",
+        "email": "auditor@ecwa.app",
+        "phone": "+2348012345680",
+        "role": "Auditor",
+        "portfolio": "Financial Oversight",
+        "status": "active",
+        "startDate": "2025-09-17T17:58:13.681Z",
+        "createdAt": "2025-09-17T17:58:13.681Z"
+      }
+    ],
+    "org_1758131893681_7jqm1o0bm": []
+  }
+}

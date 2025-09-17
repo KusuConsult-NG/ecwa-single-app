@@ -1,6 +1,8 @@
 import { hashPassword } from './auth'
+import fs from 'fs'
+import path from 'path'
 
-// In-memory database for single app (replace with real database in production)
+// Simple file-based database for persistence (replace with real database in production)
 class Database {
   private users: any[] = []
   private organizations: any[] = []
@@ -15,6 +17,59 @@ class Database {
 
   private initialized = false
   private defaultOrgId = "ecwa-main"
+  private dataFile = path.join(process.cwd(), 'data', 'database.json')
+
+  constructor() {
+    this.loadData()
+  }
+
+  private loadData() {
+    try {
+      if (fs.existsSync(this.dataFile)) {
+        const data = JSON.parse(fs.readFileSync(this.dataFile, 'utf8'))
+        this.users = data.users || []
+        this.organizations = data.organizations || []
+        this.sessions = new Map(Object.entries(data.sessions || {}))
+        this.financials = new Map(Object.entries(data.financials || {}))
+        this.members = new Map(Object.entries(data.members || {}))
+        this.expenditures = new Map(Object.entries(data.expenditures || {}))
+        this.agencies = new Map(Object.entries(data.agencies || {}))
+        this.staff = new Map(Object.entries(data.staff || {}))
+        this.requisitions = new Map(Object.entries(data.requisitions || {}))
+        this.leaders = new Map(Object.entries(data.leaders || {}))
+        this.initialized = true
+      }
+    } catch (error) {
+      console.error('Error loading database:', error)
+    }
+  }
+
+  private saveData() {
+    try {
+      // Ensure data directory exists
+      const dataDir = path.dirname(this.dataFile)
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true })
+      }
+
+      const data = {
+        users: this.users,
+        organizations: this.organizations,
+        sessions: Object.fromEntries(this.sessions),
+        financials: Object.fromEntries(this.financials),
+        members: Object.fromEntries(this.members),
+        expenditures: Object.fromEntries(this.expenditures),
+        agencies: Object.fromEntries(this.agencies),
+        staff: Object.fromEntries(this.staff),
+        requisitions: Object.fromEntries(this.requisitions),
+        leaders: Object.fromEntries(this.leaders)
+      }
+      
+      fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2))
+    } catch (error) {
+      console.error('Error saving database:', error)
+    }
+  }
 
   private async initializeSampleData() {
     if (this.initialized) return
@@ -113,6 +168,7 @@ class Database {
       createdAt: new Date().toISOString()
     }
     this.users.push(newUser)
+    this.saveData()
     return newUser
   }
 
@@ -130,9 +186,10 @@ class Database {
     await this.ensureInitialized()
     const userIndex = this.users.findIndex(u => u.id === id)
     if (userIndex !== -1) {
-    this.users[userIndex] = { ...this.users[userIndex], ...updates }
-    return this.users[userIndex]
-  }
+      this.users[userIndex] = { ...this.users[userIndex], ...updates }
+      this.saveData()
+      return this.users[userIndex]
+    }
     return null
   }
 
@@ -361,6 +418,7 @@ class Database {
     this.requisitions.set(organization.id, [])
     this.leaders.set(organization.id, [])
     
+    this.saveData()
     return organization
   }
 
