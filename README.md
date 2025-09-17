@@ -1,79 +1,31 @@
-# ECWA Multi-Tenant Management System
+# ECWA Management System - Single App
 
-A comprehensive multi-tenant church management system built for ECWA (Evangelical Church Winning All) organizations.
+A comprehensive church management platform for the Evangelical Church Winning All (ECWA) built with Next.js 14.
 
 ## Features
 
-### 🔐 Authentication & Authorization
-- JWT-based authentication with tenant isolation
-- Role-based access control (Admin, Treasurer, Secretary, Member)
-- Secure login/register system for each tenant
-
-### 💰 Financial Management
-- Income and expense tracking
-- Real-time financial summaries and analytics
-- Transaction categorization and reporting
-- Financial dashboard with visual charts
-
-### 👥 Member Management
-- Complete member directory and profiles
-- Member registration and status tracking
-- Role assignment and permissions
-- Member statistics and analytics
-
-### 🏢 Agency Management
-- Church agencies and ministries management
-- Fellowship groups (Women, Men, Youth, Children)
-- Ministry tracking (Choir, Ushering, Evangelism, etc.)
-- Agency leadership and contact management
-
-### 👨‍💼 Staff Management
-- Staff directory and HR management
-- Department organization and role tracking
-- Salary management and compensation tracking
-- Staff qualifications and certifications
-
-### 🧾 Expenditure Tracking
-- Expenditure request and approval workflow
-- Category-based organization
-- Status tracking (pending/approved/rejected)
-- Request management and reporting
-
-### 📊 Reporting System
-- Comprehensive financial reports
-- Member analytics and demographics
-- Expenditure analysis and trends
-- Export options (PDF, Excel, Print)
-
-## Multi-Tenant Architecture
-
-- **Tenant Isolation**: Each organization has completely separate data
-- **Dynamic Routing**: `/[tenant]` for tenant-specific pages
-- **Shared Styling**: Consistent ECWA branding across all tenants
-- **Scalable Structure**: Easy to add new organizations
-
-## Available Organizations
-
-- **ECWA Jos DCC**: `https://your-domain.vercel.app/jos`
-- **ECWA Kaduna DCC**: `https://your-domain.vercel.app/kaduna`
-
-## Sample Accounts
-
-### ECWA Jos DCC
-- **Admin**: `admin@jos.ecwa.app` / `admin123`
-- **Treasurer**: `treasurer@jos.ecwa.app` / `treasurer123`
+- **Dashboard**: Financial overview, member statistics, and recent activity
+- **Leader Management**: Add, edit, and manage church leaders
+- **Financial Management**: Track income, expenditures, and financial records
+- **Member Management**: Manage church members and their information
+- **Agencies & Staff**: Manage church agencies and staff members
+- **Requisitions & Approvals**: Handle financial requests and approval workflows
+- **Reports**: Generate various reports and analytics
+- **Data Import**: Import existing ECWA data
 
 ## Technology Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS with custom ECWA theme
-- **Authentication**: JWT tokens with secure cookies
-- **Database**: In-memory storage (easily replaceable with PostgreSQL/MongoDB)
-- **Deployment**: Vercel
+- **Framework**: Next.js 14.2.5
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with custom ECWA branding
+- **Authentication**: JWT-based authentication
+- **Database**: In-memory database (demo purposes)
+- **Package Manager**: Bun
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18+ or Bun
 - Git
 
@@ -81,8 +33,8 @@ A comprehensive multi-tenant church management system built for ECWA (Evangelica
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/ecwa-multitenant.git
-cd ecwa-multitenant
+git clone https://github.com/your-username/ecwa-single-app.git
+cd ecwa-single-app
 ```
 
 2. Install dependencies:
@@ -92,94 +44,110 @@ bun install
 npm install
 ```
 
-3. Set up environment variables:
-```bash
-cp .env.example .env.local
-```
-
-4. Run the development server:
+3. Run the development server:
 ```bash
 bun run dev
 # or
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Environment Variables
-
-Create a `.env.local` file with the following variables:
-
-```env
-AUTH_SECRET=your-secret-key-here
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-## Deployment
-
-### Vercel Deployment
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Set environment variables in Vercel dashboard
-4. Deploy!
-
-### Manual Deployment
-
-```bash
-# Build the application
-bun run build
-
-# Start production server
-bun run start
-```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
 ```
 src/
-├── app/
-│   ├── [tenant]/           # Tenant-specific pages
-│   │   ├── api/           # API routes
-│   │   ├── agencies/      # Agency management
-│   │   ├── expenditures/  # Expenditure tracking
-│   │   ├── financials/    # Financial management
-│   │   ├── login/         # Authentication
-│   │   ├── members/       # Member management
-│   │   ├── reports/       # Reporting system
-│   │   ├── staff/         # Staff management
-│   │   └── page.tsx       # Dashboard
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   │   ├── auth/          # Authentication endpoints
+│   │   ├── leaders/       # Leader management
+│   │   ├── financials/    # Financial data
+│   │   └── ...
+│   ├── components/        # React components
 │   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Landing page
-├── components/
-│   ├── TenantProvider.tsx # Tenant context
-│   ├── TenantSidebar.tsx  # Navigation sidebar
-│   └── TenantTopbar.tsx   # Top navigation
-├── lib/
+│   └── page.tsx           # Home page
+├── lib/                   # Utility libraries
 │   ├── auth.ts           # Authentication utilities
-│   ├── database.ts       # Database layer
-│   └── tenant.ts         # Tenant utilities
-└── types/
-    └── tenant.ts         # TypeScript definitions
+│   ├── database.ts       # Database management
+│   └── rbac.ts           # Role-based access control
+└── types/                 # TypeScript type definitions
 ```
+
+## ECWA Branding
+
+The application uses the official ECWA color scheme:
+- Primary Blue: `#0ea5e9` (ecwa-500)
+- Dark Blue: `#0284c7` (ecwa-600)
+- Light Blue: `#f0f9ff` (ecwa-50)
+
+## Features Overview
+
+### Dashboard
+- Financial overview with key metrics
+- Member statistics
+- Recent activity feed
+- Quick access to main features
+
+### Leader Management
+- Add new leaders with roles and portfolios
+- Edit existing leader information
+- Track leader status and tenure
+- Role-based permissions
+
+### Financial Management
+- Track income and expenditures
+- Generate financial reports
+- Manage budgets and allocations
+- Approval workflows
+
+### Member Management
+- Member registration and profiles
+- Contact information management
+- Membership status tracking
+- Family relationships
+
+## API Endpoints
+
+- `GET /api/leaders` - Get all leaders
+- `POST /api/leaders` - Create new leader
+- `GET /api/financials` - Get financial data
+- `POST /api/financials` - Add financial record
+- `GET /api/members` - Get all members
+- `POST /api/members` - Add new member
+
+## Development
+
+### Adding New Features
+
+1. Create API routes in `src/app/api/`
+2. Add corresponding pages in `src/app/`
+3. Update types in `src/types/`
+4. Add database methods in `src/lib/database.ts`
+
+### Styling
+
+The application uses Tailwind CSS with custom ECWA colors. All styling follows the ECWA brand guidelines.
+
+## Deployment
+
+The application is ready for deployment on Vercel:
+
+1. Connect your GitHub repository to Vercel
+2. Set environment variables if needed
+3. Deploy automatically on push to main branch
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is proprietary to ECWA (Evangelical Church Winning All).
 
 ## Support
 
-For support and questions, please contact the development team or create an issue in the repository.
-
----
-
-**Built with ❤️ for ECWA Churches**
+For support and questions, please contact the development team.
