@@ -136,14 +136,12 @@ class Database {
   }
 
   // Session management
-  async createSession(userId: string): Promise<string> {
+  async createSession(sessionId: string, userId: string, tenantId?: string, expires?: Date): Promise<void> {
     await this.ensureInitialized()
-    const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
     this.sessions.set(sessionId, {
       userId,
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours
+      expires: expires || new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours
     })
-    return sessionId
   }
 
   async getSession(sessionId: string): Promise<any | null> {
@@ -339,6 +337,49 @@ class Database {
         return true
     }
     return false
+  }
+
+  // Organization management
+  async createOrganization(data: any): Promise<any> {
+    await this.ensureInitialized()
+    const organization = {
+      ...data,
+      id: `org_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      createdAt: new Date().toISOString()
+    }
+    
+    // Initialize empty data for the new organization
+    this.financials.set(organization.id, [])
+    this.members.set(organization.id, [])
+    this.expenditures.set(organization.id, [])
+    this.agencies.set(organization.id, [])
+    this.staff.set(organization.id, [])
+    this.requisitions.set(organization.id, [])
+    this.leaders.set(organization.id, [])
+    
+    return organization
+  }
+
+  async getOrganization(id: string): Promise<any | null> {
+    await this.ensureInitialized()
+    // For now, return a mock organization since we don't store them separately
+    // In a real app, you'd have a separate organizations table
+    return {
+      id,
+      name: 'ECWA Organization',
+      type: 'LC',
+      createdAt: new Date().toISOString()
+    }
+  }
+
+  async updateOrganization(id: string, updates: any): Promise<any | null> {
+    await this.ensureInitialized()
+    // Mock implementation - in real app, update organization in database
+    return {
+      id,
+      ...updates,
+      updatedAt: new Date().toISOString()
+    }
   }
 }
 

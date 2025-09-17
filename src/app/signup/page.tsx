@@ -32,7 +32,7 @@ export default function SignupPage() {
     }
 
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,11 @@ export default function SignupPage() {
           name: formData.name,
           email: formData.email,
           password: formData.password,
-          role: 'Member'
+          role: 'Member',
+          orgType: formData.orgType,
+          orgName: formData.orgName,
+          phone: formData.phone,
+          address: formData.address
         }),
       })
 

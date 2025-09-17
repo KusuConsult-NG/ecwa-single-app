@@ -24,7 +24,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Create session
-    const sessionId = await db.createSession(user.id)
+    const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+    await db.createSession(sessionId, user.id, undefined, expires)
 
     // Create JWT token
     const token = await signToken({

@@ -5,7 +5,16 @@ import { cookies } from "next/headers"
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, password, role = 'Member' } = await request.json()
+    const { 
+      name, 
+      email, 
+      password, 
+      role = 'Member',
+      orgType,
+      orgName,
+      phone,
+      address
+    } = await request.json()
     
     if (!name || !email || !password) {
       return NextResponse.json(
@@ -34,6 +43,25 @@ export async function POST(request: NextRequest) {
     // Hash password and update user
     const passwordHash = hashPassword(password)
     await db.updateUser(user.id, { passwordHash })
+
+    // Create organization if provided
+    let organization = null
+    if (orgType && orgName) {
+      organization = await db.createOrganization({
+        name: orgName,
+        type: orgType,
+        phone: phone || '',
+        address: address || '',
+        createdBy: user.id
+      })
+
+      // Update user with organization info
+      await db.updateUser(user.id, { 
+        orgId: organization.id,
+        orgName: organization.name,
+        role: role === 'Member' ? 'Admin' : role // First user becomes admin
+      })
+    }
 
     // Create session
     const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
@@ -65,12 +93,15 @@ export async function POST(request: NextRequest) {
         email: user.email,
         name: user.name,
         role: user.role,
-        permissions: user.permissions
-      }
+        permissions: user.permissions,
+        orgId: organization?.id,
+        orgName: organization?.name
+      },
+      organization
     })
 
   } catch (error) {
-    console.error('Registration error:', error)
+    console.error('Signup error:', error)
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
