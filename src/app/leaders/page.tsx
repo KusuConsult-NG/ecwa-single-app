@@ -31,7 +31,8 @@ export default function LeadersPage() {
 
   const roles = [
     'President', 'General Secretary', 'Treasurer', 'Chairman', 'Secretary',
-    'LO', 'Senior Minister', 'Financial Secretary', 'Youth Pastor', 'CEL', 'Admin'
+    'LO', 'Senior Minister', 'Financial Secretary', 'Youth Pastor', 'CEL', 'Admin',
+    'Accountant', 'Auditor'
   ]
 
   useEffect(() => {

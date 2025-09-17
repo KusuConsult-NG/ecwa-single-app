@@ -71,6 +71,28 @@ class Database {
         status: 'active',
         startDate: new Date().toISOString(),
         createdAt: new Date().toISOString()
+      },
+      {
+        id: 'leader_2',
+        name: 'Mrs. Sarah Johnson',
+        email: 'accountant@ecwa.app',
+        phone: '+2348012345679',
+        role: 'Accountant',
+        portfolio: 'Financial Management',
+        status: 'active',
+        startDate: new Date().toISOString(),
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: 'leader_3',
+        name: 'Mr. David Wilson',
+        email: 'auditor@ecwa.app',
+        phone: '+2348012345680',
+        role: 'Auditor',
+        portfolio: 'Financial Oversight',
+        status: 'active',
+        startDate: new Date().toISOString(),
+        createdAt: new Date().toISOString()
       }
     ])
   }
@@ -107,9 +129,9 @@ class Database {
     await this.ensureInitialized()
     const userIndex = this.users.findIndex(u => u.id === id)
     if (userIndex !== -1) {
-      this.users[userIndex] = { ...this.users[userIndex], ...updates }
-      return this.users[userIndex]
-    }
+    this.users[userIndex] = { ...this.users[userIndex], ...updates }
+    return this.users[userIndex]
+  }
     return null
   }
 
@@ -262,7 +284,7 @@ class Database {
     await this.ensureInitialized()
     const requisitions = this.requisitions.get(this.defaultOrgId) || []
     const reqIndex = requisitions.findIndex(r => r.id === id)
-    if (reqIndex !== -1) {
+      if (reqIndex !== -1) {
       requisitions[reqIndex] = { ...requisitions[reqIndex], ...updates }
       this.requisitions.set(this.defaultOrgId, requisitions)
       return requisitions[reqIndex]
@@ -298,11 +320,11 @@ class Database {
   async updateLeader(id: string, updates: any): Promise<any | null> {
     await this.ensureInitialized()
     const leaders = this.leaders.get(this.defaultOrgId) || []
-    const leaderIndex = leaders.findIndex(l => l.id === id)
-    if (leaderIndex !== -1) {
-      leaders[leaderIndex] = { ...leaders[leaderIndex], ...updates }
+      const leaderIndex = leaders.findIndex(l => l.id === id)
+      if (leaderIndex !== -1) {
+        leaders[leaderIndex] = { ...leaders[leaderIndex], ...updates }
       this.leaders.set(this.defaultOrgId, leaders)
-      return leaders[leaderIndex]
+        return leaders[leaderIndex]
     }
     return null
   }
@@ -310,11 +332,11 @@ class Database {
   async deleteLeader(id: string): Promise<boolean> {
     await this.ensureInitialized()
     const leaders = this.leaders.get(this.defaultOrgId) || []
-    const leaderIndex = leaders.findIndex(l => l.id === id)
-    if (leaderIndex !== -1) {
-      leaders.splice(leaderIndex, 1)
+      const leaderIndex = leaders.findIndex(l => l.id === id)
+      if (leaderIndex !== -1) {
+        leaders.splice(leaderIndex, 1)
       this.leaders.set(this.defaultOrgId, leaders)
-      return true
+        return true
     }
     return false
   }

@@ -1,6 +1,1 @@
-{
-  "/page": "app/page.js",
-  "/api/leaders/route": "app/api/leaders/route.js",
-  "/leaders/page": "app/leaders/page.js",
-  "/api/financials/route": "app/api/financials/route.js"
-}
+{}

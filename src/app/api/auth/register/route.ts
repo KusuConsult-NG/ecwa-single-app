@@ -81,6 +81,8 @@ function getDefaultPermissions(role: string): string[] {
     'Admin': ['*'],
     'Treasurer': ['financials.read', 'financials.write', 'expenditures.read', 'expenditures.write'],
     'Secretary': ['members.read', 'members.write', 'expenditures.read'],
+    'Accountant': ['financials.read', 'financials.write', 'expenditures.read', 'expenditures.write'],
+    'Auditor': ['financials.read', 'expenditures.read', 'reports.read'],
     'Member': ['profile.read', 'profile.write']
   }
   
