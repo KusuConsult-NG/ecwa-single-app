@@ -52,6 +52,48 @@
       "passwordHash": "dGVzdDEyM2Vjd2Etc2FsdA==",
       "orgId": "org_1758201135880_12mv25dau",
       "orgName": "Test Church 4"
+    },
+    {
+      "email": "test7@example.com",
+      "name": "Test User 7",
+      "role": "Admin",
+      "permissions": [
+        "profile.read",
+        "profile.write"
+      ],
+      "id": "user_1758201695213_q0yhw4h7g",
+      "createdAt": "2025-09-18T13:21:35.213Z",
+      "passwordHash": "dGVzdDEyM2Vjd2Etc2FsdA==",
+      "orgId": "org_1758201695242_h29pv1ois",
+      "orgName": "Test Church 7"
+    },
+    {
+      "email": "me@me.com",
+      "name": "me",
+      "role": "Admin",
+      "permissions": [
+        "profile.read",
+        "profile.write"
+      ],
+      "id": "user_1758201759974_atro6vjrp",
+      "createdAt": "2025-09-18T13:22:39.974Z",
+      "passwordHash": "MTIzNDVlY3dhLXNhbHQ=",
+      "orgId": "org_1758201759977_aqca3ku19",
+      "orgName": "Me"
+    },
+    {
+      "email": "test-new@example.com",
+      "name": "Test User New",
+      "role": "Admin",
+      "permissions": [
+        "profile.read",
+        "profile.write"
+      ],
+      "id": "user_1758201854342_hv06c8q8z",
+      "createdAt": "2025-09-18T13:24:14.342Z",
+      "passwordHash": "dGVzdDEyM2Vjd2Etc2FsdA==",
+      "orgId": "org_1758201854344_p5v0fhwkw",
+      "orgName": "Test Church New"
     }
   ],
   "organizations": [
@@ -72,9 +114,41 @@
       "createdBy": "user_1758201135879_ha61lb8tw",
       "id": "org_1758201135880_12mv25dau",
       "createdAt": "2025-09-18T13:12:15.880Z"
+    },
+    {
+      "name": "Test Church 7",
+      "type": "LC",
+      "phone": "",
+      "address": "",
+      "createdBy": "user_1758201695213_q0yhw4h7g",
+      "id": "org_1758201695242_h29pv1ois",
+      "createdAt": "2025-09-18T13:21:35.242Z"
+    },
+    {
+      "name": "Me",
+      "type": "LC",
+      "phone": "11111111111",
+      "address": "23 Domkat Bali Road",
+      "createdBy": "user_1758201759974_atro6vjrp",
+      "id": "org_1758201759977_aqca3ku19",
+      "createdAt": "2025-09-18T13:22:39.977Z"
+    },
+    {
+      "name": "Test Church New",
+      "type": "LC",
+      "phone": "",
+      "address": "",
+      "createdBy": "user_1758201854342_hv06c8q8z",
+      "id": "org_1758201854344_p5v0fhwkw",
+      "createdAt": "2025-09-18T13:24:14.344Z"
     }
   ],
-  "sessions": {},
+  "sessions": {
+    "session_1758201854121_vbavmhrol": {
+      "userId": "user_1758131893681_ik3xcfz18",
+      "expires": "2025-09-25T13:24:14.121Z"
+    }
+  },
   "financials": {
     "ecwa-main": [
       {
@@ -87,7 +161,10 @@
       }
     ],
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   },
   "members": {
     "ecwa-main": [
@@ -102,23 +179,38 @@
       }
     ],
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   },
   "expenditures": {
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   },
   "agencies": {
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   },
   "staff": {
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   },
   "requisitions": {
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   },
   "leaders": {
     "ecwa-main": [
@@ -157,6 +249,9 @@
       }
     ],
     "org_1758131893681_7jqm1o0bm": [],
-    "org_1758201135880_12mv25dau": []
+    "org_1758201135880_12mv25dau": [],
+    "org_1758201695242_h29pv1ois": [],
+    "org_1758201759977_aqca3ku19": [],
+    "org_1758201854344_p5v0fhwkw": []
   }
 }

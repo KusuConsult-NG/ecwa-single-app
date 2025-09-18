@@ -23,22 +23,24 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if user already exists
-    const existingUser = await db.getUserByEmail(email)
-    if (existingUser) {
-      return NextResponse.json(
-        { error: "User already exists" },
-        { status: 409 }
-      )
+    // Create user (this will check for duplicates internally)
+    let user
+    try {
+      user = await db.createUser({
+        email,
+        name,
+        role,
+        permissions: getDefaultPermissions(role)
+      })
+    } catch (error) {
+      if (error instanceof Error && error.message === 'User already exists') {
+        return NextResponse.json(
+          { error: "User already exists" },
+          { status: 409 }
+        )
+      }
+      throw error
     }
-
-    // Create user
-    const user = await db.createUser({
-      email,
-      name,
-      role,
-      permissions: getDefaultPermissions(role)
-    })
 
     // Hash password and update user
     const passwordHash = hashPassword(password)
