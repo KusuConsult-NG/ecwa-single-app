@@ -38,6 +38,20 @@
       "passwordHash": "bmV3cGFzc3dvcmQxMjNlY3dhLXNhbHQ=",
       "orgId": "org_1758131893681_7jqm1o0bm",
       "orgName": "Test Church 2"
+    },
+    {
+      "email": "test4@example.com",
+      "name": "Test User 4",
+      "role": "Admin",
+      "permissions": [
+        "profile.read",
+        "profile.write"
+      ],
+      "id": "user_1758201135879_ha61lb8tw",
+      "createdAt": "2025-09-18T13:12:15.879Z",
+      "passwordHash": "dGVzdDEyM2Vjd2Etc2FsdA==",
+      "orgId": "org_1758201135880_12mv25dau",
+      "orgName": "Test Church 4"
     }
   ],
   "organizations": [
@@ -49,6 +63,15 @@
       "createdBy": "user_1758131893681_ik3xcfz18",
       "id": "org_1758131893681_7jqm1o0bm",
       "createdAt": "2025-09-17T17:58:13.681Z"
+    },
+    {
+      "name": "Test Church 4",
+      "type": "LC",
+      "phone": "",
+      "address": "",
+      "createdBy": "user_1758201135879_ha61lb8tw",
+      "id": "org_1758201135880_12mv25dau",
+      "createdAt": "2025-09-18T13:12:15.880Z"
     }
   ],
   "sessions": {},
@@ -63,7 +86,8 @@
         "category": "Tithe"
       }
     ],
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   },
   "members": {
     "ecwa-main": [
@@ -77,19 +101,24 @@
         "status": "active"
       }
     ],
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   },
   "expenditures": {
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   },
   "agencies": {
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   },
   "staff": {
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   },
   "requisitions": {
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   },
   "leaders": {
     "ecwa-main": [
@@ -127,6 +156,7 @@
         "createdAt": "2025-09-17T17:58:13.681Z"
       }
     ],
-    "org_1758131893681_7jqm1o0bm": []
+    "org_1758131893681_7jqm1o0bm": [],
+    "org_1758201135880_12mv25dau": []
   }
 }

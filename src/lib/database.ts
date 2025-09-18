@@ -155,13 +155,26 @@ class Database {
 
   private async ensureInitialized() {
     if (!this.initialized) {
-      await this.initializeSampleData()
+      // Try to load existing data first
+      this.loadData()
+      
+      // If no data was loaded, initialize sample data
+      if (!this.initialized) {
+        await this.initializeSampleData()
+      }
     }
   }
 
   // User management
   async createUser(user: any): Promise<any> {
     await this.ensureInitialized()
+    
+    // Check if user already exists
+    const existingUser = this.users.find(u => u.email === user.email)
+    if (existingUser) {
+      throw new Error('User already exists')
+    }
+    
     const newUser = {
       ...user,
       id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
